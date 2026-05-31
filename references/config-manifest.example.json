@@ -1,0 +1,52 @@
+{
+  "harmonizable_files": [
+    {
+      "path": "analysis_options.yaml",
+      "category": "shared-identical",
+      "merge_strategy": "union",
+      "notes": "Apps may add exclude patterns for generated code"
+    },
+    {
+      "path": "scripts/flutter_run_with_env.sh",
+      "category": "shared-template",
+      "merge_strategy": "template"
+    },
+    {
+      "path": "scripts/flutter_build_with_env.sh",
+      "category": "shared-template",
+      "merge_strategy": "template"
+    },
+    {
+      "path": "scripts/_common.sh",
+      "category": "shared-template",
+      "merge_strategy": "copy"
+    },
+    {
+      "path": "Makefile",
+      "category": "shared-template",
+      "merge_strategy": "template",
+      "notes": "App name and env file paths vary per app"
+    },
+    {
+      "path": ".fvmrc",
+      "category": "shared-identical",
+      "merge_strategy": "copy",
+      "notes": "All apps should use the same Flutter SDK version"
+    },
+    {
+      "path": "AGENTS.md",
+      "category": "shared-template",
+      "merge_strategy": "template",
+      "notes": "Core principles shared; wiring section is app-specific"
+    }
+  ],
+  "intentional_overrides": {
+    "my-app": {
+      "analysis_options.yaml": [
+        "redefines analyzer.exclude (replaces base excludes; repeat shared patterns)",
+        "added build/** exclude (required in app file when exclude is redefined)",
+        "added lib/l10n/** exclude"
+      ]
+    }
+  }
+}

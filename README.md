@@ -1,0 +1,90 @@
+# shigindo-flutter-skills
+
+Opinionated [Agent Skills](https://docs.flutter.dev/ai/agent-skills) for solo and small-team Flutter development: monorepo config harmonization, DevOps commands, and store release workflows.
+
+Maintained by [shigindo-inc](https://github.com/shigindo-inc). Complements the official Dart/Flutter skill sets; does not replace them.
+
+## What is included
+
+| Skill | Purpose |
+| --- | --- |
+| `flutter-devops` | Build, run, clean, version bump, format, analyze, test (FVM-aware) |
+| `config-sync` | Sync shared config from monorepo root to `apps/<name>/` |
+| `config-promote` | Promote app-level config improvements to the root (SSOT) |
+| `store-release` | App Store / Play Store release pipeline and checklists |
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (for `npx skills`)
+- [skills CLI](https://github.com/vercel-labs/skills) via `npx skills`
+- Flutter project; monorepo layout `apps/<app-name>/` is assumed for config skills
+
+## Install these skills
+
+From your project root:
+
+```bash
+# Claude Code (recommended — writes .claude/skills/)
+npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent claude-code --yes
+
+# Codex, Cursor, Gemini CLI, and other universal layouts (.agents/skills/)
+npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent universal --yes
+```
+
+Install a single skill:
+
+```bash
+npx skills add shigindo-inc/shigindo-flutter-skills --skill flutter-devops --agent claude-code --yes
+```
+
+## Official Dart/Flutter skills (install separately)
+
+Source of truth is GitHub, not npm packages:
+
+- [flutter/skills](https://github.com/flutter/skills)
+- [dart-lang/skills](https://github.com/dart-lang/skills)
+
+```bash
+npx skills add flutter/skills --skill '*' --agent claude-code --yes
+npx skills add dart-lang/skills --skill '*' --agent claude-code --yes
+
+# When you also use Codex / Cursor with .agents/skills/
+npx skills add flutter/skills --skill '*' --agent universal --yes
+npx skills add dart-lang/skills --skill '*' --agent universal --yes
+```
+
+Or run the bundled helper (from this repo or after clone):
+
+```bash
+./scripts/install-official.sh
+```
+
+Skill names use `flutter-*` and `dart-*` prefixes; this repo uses `config-*`, `flutter-devops`, and `store-release` — no name collisions.
+
+## Claude Code vs `.agents/skills`
+
+Claude Code discovers skills under `.claude/skills/` and `~/.claude/skills/` only. It does **not** read `.agents/skills/` today. Use `--agent claude-code` for Claude, and `--agent universal` when you share the same repo with Codex or Cursor.
+
+To mirror both layouts after a local checkout:
+
+```bash
+./scripts/sync-dual-layout.sh /path/to/your/project
+```
+
+## Config manifest
+
+Config sync/promote skills expect a root manifest at `.claude/config-manifest.json` (convention). See [references/config-manifest.example.json](references/config-manifest.example.json).
+
+## Update
+
+```bash
+npx skills update
+```
+
+## Development (dogfooding)
+
+This repo is the SSOT for the four published skills. [flutter_suite](https://github.com/shigindo-inc/flutter_suite) syncs them via `scripts/sync-published-skills.sh` and keeps monorepo-only skills (`ui-kit`, `app-foundation`) locally.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
