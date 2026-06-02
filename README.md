@@ -30,24 +30,27 @@ Maintained by [shigindo-inc](https://github.com/shigindo-inc). Complements the o
 
 ## Install these skills
 
-### Channel A — project or user (`npx skills`, recommended)
+### Channel A — user-global (`npx skills --global`, recommended)
 
-From your project root:
+Once per machine (any directory):
 
 ```bash
-# Claude Code (writes .claude/skills/)
-npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent claude-code --yes
+./scripts/install-global-skills.sh
+```
 
-# Codex, Cursor, Gemini CLI (.agents/skills/)
+This installs shigindo published skills and official flutter/dart skills into `~/.claude/skills/` and universal global paths. Claude Code does **not** read `.agents/skills/` — the script runs both `claude-code` and `universal` targets.
+
+Per-project install (optional):
+
+```bash
+npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent claude-code --yes
 npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent universal --yes
 ```
 
-Claude Code does **not** read `.agents/skills/` — run **both** commands when you use Claude and Codex/Cursor on the same repo.
-
-Install a single skill:
+Install a single skill globally:
 
 ```bash
-npx skills add shigindo-inc/shigindo-flutter-skills --skill flutter-devops --agent claude-code --yes
+npx skills add shigindo-inc/shigindo-flutter-skills --skill flutter-devops --agent claude-code --global --yes
 ```
 
 ### Channel B — Claude Code plugin (optional, user-global)
@@ -116,7 +119,7 @@ npx skills update
 
 This repo is the SSOT for published skills (`skills/`). After editing skills, run `./scripts/build-dist.sh` before committing plugin artifacts under `dist/`.
 
-[flutter_suite](https://github.com/shigindo-inc/flutter_suite) installs published skills from GitHub via `./scripts/install-published-skills.sh` and keeps monorepo-only skills (`ui-kit`, `app-foundation`) under its own `skills/` directory.
+[flutter_suite](https://github.com/shigindo-inc/flutter_suite) uses user-global published/official skills and keeps monorepo-only skills (`ui-kit`, `app-foundation`) under its own `skills/` directory (`sync-local-skills.sh` only).
 
 ## Documentation (aikata)
 
