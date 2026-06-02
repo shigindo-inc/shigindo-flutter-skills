@@ -11,7 +11,7 @@ PROJECT_ROOT="$(cd "$1" && pwd)"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS_SRC="$(cd "$SCRIPT_DIR/.." && pwd)/skills"
 
-PUBLISHED=(flutter-devops config-sync config-promote store-release)
+PUBLISHED=(flutter-devops config-sync config-promote store-release widgetbook-catalog)
 
 for name in "${PUBLISHED[@]}"; do
   src="$SKILLS_SRC/$name"

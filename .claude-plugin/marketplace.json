@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "shigindo-flutter-skills",
+  "version": "0.1.0",
+  "description": "Flutter DevOps, monorepo config sync/promote, store release, and Widgetbook catalog Agent Skills.",
+  "owner": {
+    "name": "shigindo-inc",
+    "url": "https://github.com/shigindo-inc"
+  },
+  "plugins": [
+    {
+      "name": "shigindo-flutter-skills",
+      "description": "Opinionated Agent Skills for solo and small-team Flutter development.",
+      "version": "0.1.0",
+      "author": {
+        "name": "shigindo-inc",
+        "url": "https://github.com/shigindo-inc"
+      },
+      "source": "./dist/claude-code/plugin",
+      "category": "development",
+      "tags": ["flutter", "dart", "devops", "monorepo", "agent-skills"]
+    }
+  ]
+}

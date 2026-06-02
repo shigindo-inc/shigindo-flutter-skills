@@ -42,8 +42,8 @@ audience: [human, agent]
 
 ### 2.1 ゴール（スコープ内）
 
-- 4 つの公開スキル（`flutter-devops`, `config-sync`, `config-promote`, `store-release`）を安定提供
-- Claude Code と universal（`.agents/skills/`）の両レイアウトに対応したインストール手順
+- 5 つの公開スキル（`flutter-devops`, `config-sync`, `config-promote`, `store-release`, `widgetbook-catalog`）を安定提供
+- Claude Code と universal（`.agents/skills/`）の両レイアウト、および Claude/Codex 自前 marketplace プラグインに対応した配布
 - モノレポ `apps/<name>/` レイアウトを前提とした設定同期・昇格ワークフローの文書化
 - 公式 Dart/Flutter スキルとの共存（名前衝突なし）
 
@@ -59,7 +59,7 @@ audience: [human, agent]
 | 層 | ペルソナ | ニーズ |
 |---|---|---|
 | 主要 | ソロ / 小規模チームの Flutter 開発者 | エージェントに DevOps・設定・リリース手順を一貫して実行させたい |
-| 副次 | shigindo-inc メンテナー | スキル SSOT の更新と flutter_suite への同期 |
+| 副次 | shigindo-inc メンテナー | スキル SSOT の更新と flutter_suite での dogfooding |
 
 ### 2.4 対応プラットフォーム
 
@@ -78,12 +78,16 @@ audience: [human, agent]
 | `config-sync` | ルート設定を `apps/<name>/` へマニフェストに従って同期 |
 | `config-promote` | アプリ側の改善をルート SSOT へ昇格 |
 | `store-release` | App Store / Play Store 提出パイプラインとチェックリストを案内 |
+| `widgetbook-catalog` | Widgetbook によるコンポーネントカタログの構築・共有 |
 
 ### 3.2 インストール
 
-- `npx skills add shigindo-inc/shigindo-flutter-skills` で単体または全スキルを取得
-- `./scripts/install-official.sh` で公式 Dart/Flutter スキルを追加可能
-- `./scripts/sync-dual-layout.sh` で Claude / universal レイアウトをミラー
+- **Channel A**: `npx skills add shigindo-inc/shigindo-flutter-skills`（`--agent claude-code` と `--agent universal`）
+- **Channel B**: Claude Code 自前 marketplace（`.claude-plugin/marketplace.json` + `dist/claude-code/plugin/`）
+- **Channel C**: Codex 自前 marketplace（`.agents/plugins/marketplace.json` + `dist/codex/plugin/`）
+- `./scripts/install-official.sh` で公式 Dart/Flutter スキルを別途追加可能
+- `./scripts/sync-dual-layout.sh` でローカル checkout から他プロジェクトへ dual layout コピー
+- `./scripts/build-dist.sh` で `skills/` から `dist/` を再生成（コミット前）
 
 ---
 
