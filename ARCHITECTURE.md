@@ -72,8 +72,9 @@ shigindo-flutter-skills/
 ### 3.2 `scripts/`
 
 - `build-dist.sh` — `skills/` から `dist/` と plugin マニフェストを再生成
-- `install-official.sh` — 公式 flutter/skills, dart-lang/skills のインストール
-- `sync-dual-layout.sh` — Claude Code / universal レイアウトのミラー
+- `install-global-skills.sh` — 公開 + 公式スキルを user-global にインストール
+- `install-official.sh` — 公式 flutter/skills, dart-lang/skills（プロジェクト向け、任意）
+- `sync-dual-layout.sh` — Claude Code / universal レイアウトのミラー（プロジェクト向け、任意）
 
 ### 3.4 `dist/` と marketplace
 
@@ -99,8 +100,8 @@ shigindo-flutter-skills/
 [AI エージェント] → スキル自動/手動トリガー → 手順実行
 ```
 
-[flutter_suite](https://github.com/shigindo-inc/flutter_suite) は GitHub から
-`npx skills add` で公開スキルを bootstrap し、dogfooding する（ローカルコピーは Git に含めない）。
+[flutter_suite](https://github.com/shigindo-inc/flutter_suite) は user-global の公開・公式スキルを利用し、
+`skills/ui-kit` と `skills/app-foundation` だけ `sync-local-skills.sh` でプロジェクトに展開する。
 
 ## 5. 依存
 
@@ -130,4 +131,4 @@ shigindo-flutter-skills/
 - GitHub リポジトリが SSOT。タグ付けは任意。
 - `npx skills update` で利用者が最新を取得。
 - `./scripts/build-dist.sh` で `dist/` を再生成してからコミット（aikata と同方針）。
-- flutter_suite は `install-published-skills.sh` で GitHub から取得。
+- flutter_suite は user-global を前提とし、suite-local のみ `sync-local-skills.sh`。

@@ -16,15 +16,19 @@ Repository root also has:
 - `.claude-plugin/marketplace.json` — self-hosted Claude Code marketplace
 - `.agents/plugins/marketplace.json` — self-hosted Codex marketplace
 
-## Install (channel A — project or user via skills CLI)
+## Install (channel A — user-global via skills CLI, recommended)
 
 ```bash
-npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent claude-code --yes
-npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent universal --yes
-npx skills update
+# From shigindo-flutter-skills repo (includes official flutter/dart)
+./scripts/install-global-skills.sh
+
+# Or shigindo skills only:
+npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent claude-code --global --yes
+npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent universal --global --yes
+npx skills update --global
 ```
 
-Claude Code reads `.claude/skills/` only; Codex/Cursor use `.agents/skills/` from `--agent universal`.
+Claude Code reads `~/.claude/skills/` when installed with `--global`. Codex/Cursor use universal global paths from `--agent universal --global`.
 
 ## Install (channel B — Claude Code plugin, optional)
 
