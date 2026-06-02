@@ -20,6 +20,7 @@ Maintained by [shigindo-inc](https://github.com/shigindo-inc). Complements the o
 | `config-sync` | Sync shared config from monorepo root to `apps/<name>/` |
 | `config-promote` | Promote app-level config improvements to the root (SSOT) |
 | `store-release` | App Store / Play Store release pipeline and checklists |
+| `widgetbook-catalog` | Component catalog with Widgetbook (manual, no codegen); reuse real theme, extract inline widgets, build web to share |
 
 ## Prerequisites
 
@@ -29,21 +30,43 @@ Maintained by [shigindo-inc](https://github.com/shigindo-inc). Complements the o
 
 ## Install these skills
 
+### Channel A — project or user (`npx skills`, recommended)
+
 From your project root:
 
 ```bash
-# Claude Code (recommended — writes .claude/skills/)
+# Claude Code (writes .claude/skills/)
 npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent claude-code --yes
 
-# Codex, Cursor, Gemini CLI, and other universal layouts (.agents/skills/)
+# Codex, Cursor, Gemini CLI (.agents/skills/)
 npx skills add shigindo-inc/shigindo-flutter-skills --skill '*' --agent universal --yes
 ```
+
+Claude Code does **not** read `.agents/skills/` — run **both** commands when you use Claude and Codex/Cursor on the same repo.
 
 Install a single skill:
 
 ```bash
 npx skills add shigindo-inc/shigindo-flutter-skills --skill flutter-devops --agent claude-code --yes
 ```
+
+### Channel B — Claude Code plugin (optional, user-global)
+
+Inside Claude Code:
+
+```text
+/plugin marketplace add shigindo-inc/shigindo-flutter-skills
+/plugin install shigindo-flutter-skills@shigindo-flutter-skills
+```
+
+### Channel C — Codex plugin (optional, CLI 0.135.0+)
+
+```bash
+codex plugin marketplace add shigindo-inc/shigindo-flutter-skills --ref v0.1.0
+codex plugin add shigindo-flutter-skills@shigindo-flutter-skills
+```
+
+See [dist/README.md](dist/README.md) for distribution layout and rebuild steps.
 
 ## Official Dart/Flutter skills (install separately)
 
@@ -91,7 +114,9 @@ npx skills update
 
 ## Development (dogfooding)
 
-This repo is the SSOT for the four published skills. [flutter_suite](https://github.com/shigindo-inc/flutter_suite) syncs them via `scripts/sync-published-skills.sh` and keeps monorepo-only skills (`ui-kit`, `app-foundation`) locally.
+This repo is the SSOT for published skills (`skills/`). After editing skills, run `./scripts/build-dist.sh` before committing plugin artifacts under `dist/`.
+
+[flutter_suite](https://github.com/shigindo-inc/flutter_suite) installs published skills from GitHub via `./scripts/install-published-skills.sh` and keeps monorepo-only skills (`ui-kit`, `app-foundation`) under its own `skills/` directory.
 
 ## Documentation (aikata)
 

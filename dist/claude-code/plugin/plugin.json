@@ -1,0 +1,20 @@
+{
+  "name": "shigindo-flutter-skills",
+  "version": "0.1.0",
+  "description": "Flutter DevOps, monorepo config sync/promote, store release, and Widgetbook catalog skills for solo and small teams.",
+  "homepage": "https://github.com/shigindo-inc/shigindo-flutter-skills",
+  "repository": "https://github.com/shigindo-inc/shigindo-flutter-skills",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "shigindo-inc",
+      "url": "https://github.com/shigindo-inc"
+    }
+  ],
+  "category": "development",
+  "keywords": ["flutter", "dart", "devops", "monorepo", "agent-skills"],
+  "tags": ["flutter", "dart", "devops", "monorepo"],
+  "components": {
+    "skills": ["skills/flutter-devops/SKILL.md","skills/config-sync/SKILL.md","skills/config-promote/SKILL.md","skills/store-release/SKILL.md","skills/widgetbook-catalog/SKILL.md"]
+  }
+}

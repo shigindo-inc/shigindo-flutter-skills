@@ -1,0 +1,20 @@
+{
+  "name": "shigindo-flutter-skills",
+  "interface": {
+    "displayName": "shigindo Flutter Skills"
+  },
+  "plugins": [
+    {
+      "name": "shigindo-flutter-skills",
+      "source": {
+        "source": "local",
+        "path": "./dist/codex/plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -15,14 +15,15 @@ audience: [human, agent]
 
 ## 状況
 
-aikata によるドキュメント基盤のセットアップが完了した（2026-06-02）。
+- スキル配布: `skills/` SSOT + `dist/`（`build-dist.sh`）+ marketplace（aikata パターン）
+- flutter_suite: 公開スキルは GitHub から `install-published-skills.sh`、ローカルは `skills/` + `sync-local-skills.sh`
 
 ## 次のアクション
 
+- [ ] GitHub push 後、flutter_suite で `install-published-skills.sh` を検証
 - [ ] `aikata doctor` を CI に組み込むか検討
-- [ ] ROADMAP の v0.1 マイルストーンを具体化
 
 ## メモ
 
 - canonical ドキュメント編集後は `aikata generate` を実行すること
-- 本リポジトリは Flutter アプリではない — `flutter test` / `flutter analyze` は不要
+- `skills/` 変更後は `./scripts/build-dist.sh` を実行してから `dist/` をコミット

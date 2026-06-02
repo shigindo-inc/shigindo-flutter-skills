@@ -29,7 +29,7 @@ audience: [human, agent]
 ## v1.0 — 安定版
 
 - ⬜ 4 公開スキルの API（手順・参照パス）凍結
-- ⬜ flutter_suite からの sync フロー文書化
+- ✅ flutter_suite からの bootstrap フロー文書化（npx + `skills/` ローカル SSOT）
 - ⬜ 利用者向けマイグレーションガイド
 
 ---

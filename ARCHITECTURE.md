@@ -49,13 +49,17 @@ shigindo-flutter-skills/
 │   │   └── references/
 │   ├── config-sync/
 │   ├── config-promote/
-│   └── store-release/
+│   ├── store-release/
+│   └── widgetbook-catalog/
 ├── references/               # リポジトリ横断の参照例
 │   └── config-manifest.example.json
 ├── scripts/
+│   ├── build-dist.sh         # skills/ → dist/ + plugin.json
 │   ├── install-official.sh
 │   └── sync-dual-layout.sh
-└── dist/                     # 配布向け README（任意）
+├── dist/                     # 生成物（build-dist.sh）。Claude/Codex plugin
+├── .claude-plugin/marketplace.json
+└── .agents/plugins/marketplace.json
 ```
 
 ## 3. 主要コンポーネント
@@ -67,8 +71,15 @@ shigindo-flutter-skills/
 
 ### 3.2 `scripts/`
 
+- `build-dist.sh` — `skills/` から `dist/` と plugin マニフェストを再生成
 - `install-official.sh` — 公式 flutter/skills, dart-lang/skills のインストール
 - `sync-dual-layout.sh` — Claude Code / universal レイアウトのミラー
+
+### 3.4 `dist/` と marketplace
+
+- `dist/claude-code/plugin/` — Claude Code 自前 marketplace 用プラグイン
+- `dist/codex/plugin/` — Codex 自前 marketplace 用プラグイン
+- ルートの `.claude-plugin/marketplace.json` / `.agents/plugins/marketplace.json` が self-hosted 源
 
 ### 3.3 `references/`
 
@@ -79,15 +90,17 @@ shigindo-flutter-skills/
 ```
 [メンテナー編集] → skills/*/SKILL.md
        ↓
-[GitHub 公開] → npx skills add shigindo-inc/shigindo-flutter-skills
+[./scripts/build-dist.sh] → dist/ + marketplace.json（Claude/Codex plugin）
        ↓
-[利用者プロジェクト] → .claude/skills/ または .agents/skills/
+[GitHub 公開] → npx skills add / plugin marketplace install
+       ↓
+[利用者プロジェクト] → .claude/skills/ および .agents/skills/
        ↓
 [AI エージェント] → スキル自動/手動トリガー → 手順実行
 ```
 
-flutter_suite は `scripts/sync-published-skills.sh` で本リポジトリから
-スキルを取り込み、dogfooding する。
+[flutter_suite](https://github.com/shigindo-inc/flutter_suite) は GitHub から
+`npx skills add` で公開スキルを bootstrap し、dogfooding する（ローカルコピーは Git に含めない）。
 
 ## 5. 依存
 
@@ -116,4 +129,5 @@ flutter_suite は `scripts/sync-published-skills.sh` で本リポジトリから
 
 - GitHub リポジトリが SSOT。タグ付けは任意。
 - `npx skills update` で利用者が最新を取得。
-- flutter_suite 側の sync スクリプトで内部モノレポへ反映。
+- `./scripts/build-dist.sh` で `dist/` を再生成してからコミット（aikata と同方針）。
+- flutter_suite は `install-published-skills.sh` で GitHub から取得。

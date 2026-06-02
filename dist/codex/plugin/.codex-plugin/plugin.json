@@ -1,0 +1,26 @@
+{
+  "name": "shigindo-flutter-skills",
+  "version": "0.1.0",
+  "description": "Flutter DevOps, monorepo config, store release, and Widgetbook skills.",
+  "author": {
+    "name": "shigindo-inc",
+    "url": "https://github.com/shigindo-inc"
+  },
+  "homepage": "https://github.com/shigindo-inc/shigindo-flutter-skills",
+  "repository": "https://github.com/shigindo-inc/shigindo-flutter-skills",
+  "license": "MIT",
+  "keywords": ["flutter", "dart", "devops", "monorepo", "agent-skills"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "shigindo Flutter Skills",
+    "shortDescription": "Flutter DevOps and monorepo agent skills.",
+    "longDescription": "Opinionated Agent Skills for Flutter DevOps, config sync/promote, store release, and Widgetbook.",
+    "developerName": "shigindo-inc",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use flutter-devops to run analyze and tests in this Flutter project.",
+      "Use config-sync to align app config from the monorepo root."
+    ]
+  }
+}

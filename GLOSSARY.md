@@ -117,7 +117,8 @@ markdown 本文）で定義した再利用可能なユニット。skills CLI で
 ### dogfooding
 
 本リポジトリのスキルを [flutter_suite](https://github.com/shigindo-inc/flutter_suite)
-で実際に使い、手順の妥当性を検証すること。
+で実際に使い、手順の妥当性を検証すること。suite 側は GitHub から
+`npx skills add` で公開スキルを取得する（ローカルコピーは Git に含めない）。
 
 ### SSOT — Single Source of Truth
 
