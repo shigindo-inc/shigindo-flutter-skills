@@ -1,0 +1,21 @@
+version: 2
+project:
+    name: shigindo-flutter-skills
+    lang: ja
+ai_tools:
+    - claude
+    - cursor
+stacks:
+    - flutter
+components:
+    memory: false
+    ui: false
+    api: false
+    tdd: false
+    changelog: false
+    monorepo: false
+    prompts: false
+features:
+    obsidian_hints: false
+docs:
+    task_file_location: docs/tasks/current.md

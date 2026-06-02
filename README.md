@@ -1,3 +1,11 @@
+---
+project: shigindo-flutter-skills
+status: active
+version: 0.1.0
+updated: 2026-06-02
+audience: [human, agent]
+---
+
 # shigindo-flutter-skills
 
 Opinionated [Agent Skills](https://docs.flutter.dev/ai/agent-skills) for solo and small-team Flutter development: monorepo config harmonization, DevOps commands, and store release workflows.
@@ -84,6 +92,22 @@ npx skills update
 ## Development (dogfooding)
 
 This repo is the SSOT for the four published skills. [flutter_suite](https://github.com/shigindo-inc/flutter_suite) syncs them via `scripts/sync-published-skills.sh` and keeps monorepo-only skills (`ui-kit`, `app-foundation`) locally.
+
+## Documentation (aikata)
+
+This repository is managed with [aikata](https://github.com/shigindo-inc/aikata). Canonical docs for agents and maintainers:
+
+| Purpose | Document |
+|---|---|
+| What / why | [SPEC.md](./SPEC.md) |
+| How (structure) | [ARCHITECTURE.md](./ARCHITECTURE.md) |
+| Glossary | [GLOSSARY.md](./GLOSSARY.md) |
+| Agent rules | [AGENTS.md](./AGENTS.md) |
+| Stack conventions | [docs/stacks/flutter.md](./docs/stacks/flutter.md) |
+| Current work | [docs/tasks/current.md](./docs/tasks/current.md) |
+| Decisions | [docs/adr/](./docs/adr/) |
+
+After editing canonical docs, run `aikata generate` to refresh tool-specific files.
 
 ## License
 

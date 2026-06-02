@@ -1,0 +1,28 @@
+version: 1
+preset: flutter
+lang: ja
+files:
+    - path: .env.example
+      sha256: 7f3619cc6dd28d1dc0dd7504071ce979f58515b9263c95db34ebeecbdfc44618
+    - path: .gitignore
+      sha256: 390e4bfb23b03c9941698e972eecf7224d7ca6cbf9414ede1266c56308dc4892
+    - path: AGENTS.md
+      sha256: 885f480d508c26932058c5619c9271bba218eecd2b88a97c416339e1f65c8c16
+    - path: ARCHITECTURE.md
+      sha256: 16e8b99177c8559baa85c0fd9e2af53db2b2ecbd3c0b339b769fbeb7e14bcbf3
+    - path: GLOSSARY.md
+      sha256: eddc39b4525b0c6482af1e54ada35501a33d8d7e83d06204a1306ae1ca998039
+    - path: README.md
+      sha256: 9f9d5288fd0667a597b4b459f09a70056135486c30345228087b147c70f96e75
+    - path: ROADMAP.md
+      sha256: 7e503bfb5101a328576581b2f766f4fa8363ca642d3028fcc61d33c4cd31a319
+    - path: SPEC.md
+      sha256: 1a34e45ca4fafde322b13150d6fb206b7aebf2111cacec8373dc9f2429dcbc89
+    - path: docs/adr/0001-record-architecture-decisions.md
+      sha256: 1a72f425f5e3618fa9e957c723944e2379eb5a53f5457d2d5601638f1912a3f6
+    - path: docs/stacks/flutter.md
+      sha256: 3bb6e5ea80e5e311a2674afbfe8cbb4e6cf5c217ae654ac64ac9e61fe6fdffbb
+    - path: docs/tasks/current.md
+      sha256: b62a9e85db8e81c2d646f7038df0124604daa9a98d20e4d417f5aa1ca15b8724
+    - path: docs/troubleshooting.md
+      sha256: d854095048fb43cb8d692b44da19c49ec18685d145ba41fd537bcb601b84225d
